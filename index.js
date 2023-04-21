@@ -79,8 +79,11 @@ On the door is a handwritten sign.`;
 console.log(welcomeMessage)
 while (currentPlayerRoom !== 'exit') {
   let response = await ask(`Where do you want to go? `);
-  //if (response.includes('go')){
-  moveRooms(response) 
+  if (response === 'look') {
+lookAround()
+  } else {
+moveRooms(response) 
+}
 }
 //} else {
   //process.exit();
@@ -102,6 +105,10 @@ const possibleMovement = roomStates[currentPlayerRoom];
   this.playerStatus = room
   console.log(`You are now in the ${currentPlayerRoom}`)
 }
+}
+
+const lookAround = () => {
+  console.log(roomLookup[currentPlayerRoom].roomConnection)
 }
 
 console.log(currentPlayerRoom)
