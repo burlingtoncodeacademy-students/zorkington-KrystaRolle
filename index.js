@@ -78,12 +78,24 @@ roomLookup = {
   bathroom: bathroom,
 };
 
+const help = () => {
+  return `
+  Command Options
+  
+  help            - Display these instructions
+  look            - Look around room character is in
+  go direction    - Go in the specified direction. Read room description to understand where you can go.
+  grab or g       - Grab specified object from the room
+  drop or d       - Drop specified object from the bag
+  inventory or i  - Shows how much money your character has
+  `
+  }
+
 let currentPlayerRoom = "livingRoom";
 start();
 
 async function start() {
-  const welcomeMessage = `182 Main St.
-You are standing on Main Street between Church and South Winooski.
+  const welcomeMessage = `Welcome to Escape 182 Main St. ${help()}
 There is a door here. A keypad sits on the handle.
 On the door is a handwritten sign.`;
   console.log(welcomeMessage);
@@ -136,6 +148,8 @@ async function puzzle(room) {
 //set first area player is in
 
 //function that changes where player is located
+
+
 const moveRooms = (room) => {
   const possibleMovement = roomStates[currentPlayerRoom];
   if (!possibleMovement.includes(room)) {
